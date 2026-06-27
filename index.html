@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simon Kamau | Executive Hospitality & Spiritual Ministry</title>
+    <style>
+        /* Modern Architectural Color Palette & Design Tokens */
+        :root {
+            --main: #F8FAFC;       /* Premium Light Slate Background */
+            --primary: #2563EB;    /* Professional Royal Blue */
+            --secondary: #1E293B;  /* Deep Slate for Primary Text & Surfaces */
+            --accent1: #F59E0B;    /* Amber CTA & Contrast Highlights */
+            --accent2: #10B981;    /* Emerald Green Success Indicators */
+            --accent3: #EF4444;    /* Crimson Red Error / Notice Actions */
+            --white: #FFFFFF;
+            --text-muted: #64748B;  /* Slate Muted Text tint */
+            --card-bg: #FFFFFF;
+            --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Core Framework Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--main);
+            color: var(--secondary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Premium Floating Navigation Bar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(248, 250, 252, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(37, 99, 235, 0.1);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 8%;
+            box-shadow: 0 4px 20px rgba(30, 41, 59, 0.05);
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        nav .logo span {
+            color: var(--primary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin-left: 2.5rem;
+        }
+
+        nav ul li a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition-smooth);
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Master Branding Hero Canvas */
+        header {
+            height: 90vh;
+            background: linear-gradient(rgba(30, 41, 59, 0.8), rgba(248, 250, 252, 0.95)), 
+                        url('WhatsApp Image 2026-06-24 at 10.54.59 PM.jpeg') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 2rem;
+            border-bottom: 3px solid var(--primary);
+            margin-top: 60px;
+        }
+
+        header h1 {
+            font-size: 4.2rem;
+            font-weight: 900;
+            color: var(--secondary);
+            letter-spacing: -1px;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        header h1 span {
+            color: var(--primary);
+        }
+
+        header p {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            max-width: 800px;
+            font-weight: 400;
+        }
+
+        header .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        /* Buttons Architecture */
+        .btn {
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            border-radius: 6px;
+            transition: var(--transition-smooth);
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.45);
+        }
+
+        .btn-cta {
+            background-color: var(--accent1);
+            color: #0F172A; /* Dark contrast text on amber */
+            box-shadow: 0 4px 14px rgba(245, 158, 11, 0.3);
+        }
+
+        .btn-cta:hover {
+            background-color: #d97706;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.45);
+        }
+
+        /* Generic Section Framework */
+        section {
+            padding: 7rem 12% 4rem 12%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 4rem;
+            letter-spacing: -0.5px;
+            color: var(--secondary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+
+        /* Executive Portrait & Biography Grid */
+        .about-container {
+            display: flex;
+            align-items: center;
+            gap: 5rem;
+            flex-wrap: wrap;
+        }
+
+        .profile-frame {
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+            position: relative;
+        }
+
+        .profile-frame::before {
+            content: '';
+            position: absolute;
+            top: -12px;
+            left: -12px;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--primary);
+            border-radius: 12px;
+            z-index: 1;
+            transition: var(--transition-smooth);
+        }
+
+        .profile-frame img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 20px 40px rgba(30, 41, 59, 0.15);
+        }
+
+        .profile-frame:hover::before {
+            top: 0;
+            left: 0;
+            border-color: var(--accent1);
+        }
+
+        .about-text {
+            flex: 1.2;
+            min-width: 350px;
+        }
+
+        .about-text h3 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+
+        /* Corporate Philosophy Highlight Card */
+        .philosophy-quote {
+            background-color: var(--white);
+            border-left: 4px solid var(--accent1);
+            padding: 2rem;
+            border-radius: 0 12px 12px 0;
+            margin: 4rem 0 2rem 0;
+            font-style: italic;
+            font-size: 1.2rem;
+            color: var(--secondary);
+            box-shadow: 0 10px 30px rgba(30, 41, 59, 0.04);
+        }
+
+        /* Flexible Grid Systems for Ministry & Services Portfolio */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 1rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 3rem;
+            border-radius: 8px;
+            border-top: 4px solid var(--primary);
+            box-shadow: 0 10px 30px rgba(30, 41, 59, 0.04);
+            transition: var(--transition-smooth);
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(37, 99, 235, 0.1);
+        }
+
+        .card h3 {
+            color: var(--secondary);
+            margin-bottom: 1.2rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-spec-list {
+            list-style: none;
+        }
+
+        .card-spec-list li {
+            margin-bottom: 0.6rem;
+            font-size: 0.95rem;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-spec-list li::before {
+            content: '✦';
+            color: var(--accent1);
+            font-weight: bold;
+        }
+
+        /* Styled Status Utility Selectors */
+        .success { color: var(--accent2); font-weight: 700; }
+        .error { color: var(--accent3); font-weight: 700; }
+
+        /* Credentials Layout Alternation Section */
+        .alternate-section-bg {
+            background-color: var(--white);
+        }
+
+        .timeline-wrapper {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            padding: 2rem;
+            border-left: 2px solid var(--primary);
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -7px;
+            top: 2.3rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--accent1);
+            box-shadow: 0 0 8px rgba(245, 158, 11, 0.6);
+        }
+
+        .timeline-date {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.05rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .timeline-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+
+        /* Premium Conversion & Engagement Module */
+        .contact-layout {
+            display: flex;
+            gap: 4rem;
+            flex-wrap: wrap;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .contact-info-panel {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-info-panel h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+
+        .contact-details {
+            margin-top: 2rem;
+        }
+
+        .contact-detail-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            background: var(--white);
+            padding: 1.2rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(30, 41, 59, 0.02);
+            border-left: 3px solid var(--primary);
+        }
+
+        .contact-detail-item a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .contact-form-panel {
+            flex: 1.4;
+            min-width: 350px;
+            background-color: var(--white);
+            padding: 3.5rem;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(30, 41, 59, 0.03);
+            border: 1px solid rgba(30, 41, 59, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 1.8rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.6rem;
+            color: var(--secondary);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.9rem;
+            border-radius: 6px;
+            border: 1px solid rgba(148, 163, 184, 0.3);
+            background-color: var(--main);
+            color: var(--secondary);
+            font-size: 1rem;
+            transition: var(--transition-smooth);
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+            background-color: var(--white);
+        }
+
+        /* Floating Fixed WhatsApp Concierge Box Widget */
+        .whatsapp-box {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            padding: 14px 24px;
+            border-radius: 50px;
+            box-shadow: 0 8px 30px rgba(30, 41, 59, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            z-index: 9999;
+            transition: var(--transition-smooth);
+        }
+
+        .whatsapp-box:hover {
+            transform: translateY(-4px);
+            background-color: #1ebd54;
+            box-shadow: 0 12px 35px rgba(37, 211, 102, 0.35);
+        }
+
+        /* Clean Enterprise Footer */
+        footer {
+            background-color: var(--secondary);
+            text-align: center;
+            padding: 3rem 2rem;
+            color: #94A3B8;
+            font-size: 0.95rem;
+        }
+
+        footer p span {
+            color: var(--white);
+            font-weight: 700;
+        }
+
+        /* Responsive Design Parameters */
+        @media (max-width: 1024px) {
+            section { padding: 6rem 6% 3rem 6%; }
+            header h1 { font-size: 3.3rem; }
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.6rem; }
+            header p { font-size: 1.2rem; }
+            nav ul { display: none; } 
+            .about-container { flex-direction: column; text-align: center; }
+            .contact-layout { flex-direction: column; }
+            .contact-form-panel { padding: 2.5rem 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Professional Navigation Grid -->
+    <nav>
+        <div class="logo">Simon <span>Kamau</span></div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#ministry">Ministry</a></li>
+            <li><a href="#services">Hospitality</a></li>
+            <li><a href="#credentials">Milestones</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Masterful Identity Hero Canvas -->
+    <header id="home">
+        <h1>Simon <span>Kamau</span></h1>
+        <p>Premium Hospitality Strategist & Commissioned Spiritual Minister</p>
+        <div class="cta-buttons">
+            <a href="#contact" class="btn btn-primary">Retain Services</a>
+            <a href="#about" class="btn btn-cta">Review Portfolio</a>
+        </div>
+    </header>
+
+    <!-- Executive Portrait & Profile Narrative -->
+    <section id="about">
+        <h2 class="section-title">Executive Profile</h2>
+        <div class="about-container">
+            <div class="profile-frame">
+                <!-- Referenced Verbatim Image Target Link -->
+                <img src="C:\Users\hannah wanjiru\OneDrive\Documents\simon.jpeg" alt="Simon Kamau Executive Portrait">
+            </div>
+            
+            <div class="about-text">
+                <h3>Bridging Spiritual Devotion & Hospitality Excellence</h3>
+                <p>Welcome. I operate at the intentional crossroads of upscale culinary logistics and impactful spiritual stewardship. As an established expert in high-volume catering design frameworks and strategic accommodation coordination, I build executive-grade hospitality solutions that do not compromise on elegance, hygiene, or operational timelines.</p>
+                <p>Simultaneously, my life is anchored in deep evangelical and ministerial execution duties. Whether addressing distinguished corporate stakeholders to plan executive housing retreats or speaking behind modern pulpits, my objective remains uncompromised: to project systemic excellence, pure integrity, and transformative execution into every project.</p>
+            </div>
+        </div>
+
+        <div class="philosophy-quote">
+            "True service is an integrated discipline. To feed the body through exquisite hospitality and nurture the human spirit through the living word are simply two sides of the same divine assignment."
+        </div>
+    </section>
+
+    <!-- Distinguished Spiritual Ministry Module -->
+    <section id="ministry" class="alternate-section-bg">
+        <h2 class="section-title">Spiritual Stewardship</h2>
+        <div class="grid-container">
+            <div class="card" style="border-top-color: var(--accent1);">
+                <h3>Sikang Ministry</h3>
+                <p>Leading transformative evangelical frameworks within Sikang Ministry. Spearheading cross-regional spiritual operations, mentorship pillars for emerging leaders, and targeted community optimization programs.</p>
+                <ul class="card-spec-list">
+                    <li>Evangelical Strategy Development</li>
+                    <li>Community Leadership Integration</li>
+                    <li>Youth & Professional Mentorship</li>
+                </ul>
+            </div>
+            <div class="card" style="border-top-color: var(--primary);">
+                <h3>PCEA Elijah Waithaka</h3>
+                <p>Rooted deeply in spiritual service and active fellowship leadership within PCEA Elijah Waithaka. Serving as a pillar for foundational doctrine, local governance, and faith community growth structures.</p>
+                <ul class="card-spec-list">
+                    <li>Ecclesiastical Service Support</li>
+                    <li>Faith Community Coordination</li>
+                    <li>Holistic Spiritual Counseling</li>
+                </ul>
+            </div>
+            <div class="card" style="border-top-color: var(--secondary);">
+                <h3>Preaching & Intercession</h3>
+                <p>Endowed with a unique, highly impactful gift for delivering structured, rhetorically sound Preaching and targeted corporate Intercessory Prayer. Breaking down scriptural truths into life-altering lessons.</p>
+                <ul class="card-spec-list">
+                    <li>High-Impact Keynote Preaching</li>
+                    <li>Targeted Corporate Intercession</li>
+                    <li>Theological Content Architecture</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Hospitality & Corporate Catering Matrix -->
+    <section id="services">
+        <h2 class="section-title">Hospitality & Catering Systems</h2>
+        <div class="grid-container">
+            <div class="card">
+                <h3>Executive Catering Systems</h3>
+                <p>Designing sophisticated, upscale menus for elite corporate banquets, theological conferences, weddings, and high-profile institutional milestones. Impeccable presentation with high culinary standards.</p>
+                <ul class="card-spec-list">
+                    <li>Custom Premium Menu Blueprinting</li>
+                    <li>Microbiology-Grade Food Safety Setup</li>
+                    <li>Luxury Banqueting Operations</li>
+                </ul>
+            </div>
+            <div class="card" style="border-top-color: var(--accent1);">
+                <h3>Bespoke Accommodation Logistics</h3>
+                <p>Comprehensive logistical handling for corporate retreats, high-occupancy church conventions, and long-term institutional lodging configurations. Maximizing luxury and space utility.</p>
+                <ul class="card-spec-list">
+                    <li>Luxury Retreat Asset Coordination</li>
+                    <li>VIP Guest Experience Management</li>
+                    <li>Cost-Efficient Resource Scaling</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Turnkey Event Master Integration</h3>
+                <p>Providing seamless, fully integrated crossover management that guarantees the operational timeline of your spiritual assembly aligns perfectly with premium culinary service delivery.</p>
+                <ul class="card-spec-list">
+                    <li>End-to-End Operational Timelines</li>
+                    <li>Vendor Matrix Synchronization</li>
+                    <li>Elite Execution Guarantee</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Milestone Tracking Timeline -->
+    <section id="credentials" class="alternate-section-bg">
+        <h2 class="section-title">Milestones & Impact</h2>
+        <div class="timeline-wrapper">
+            <div class="timeline-item">
+                <div class="timeline-date success">ESTABLISHED FOUNDATION</div>
+                <div class="timeline-title">PCEA Elijah Waithaka Fellowship Elevation</div>
+                <p style="color: var(--text-muted);">Successfully anchored structural faith support, serving as an ongoing ministerial force for growth and localized spiritual coordination.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date success">EXPANSION PHASE</div>
+                <div class="timeline-title">Sikang Ministry Strategic Outreach Integration</div>
+                <p style="color: var(--text-muted);">Architected regional evangelical initiatives, connecting with multi-tiered audiences through powerful preaching, prayer systems, and practical mentorship workflows.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date success">CURRENT PARADIGM (2026)</div>
+                <div class="timeline-title">Dual-Industry Executive Portfolio Launch</div>
+                <p style="color: var(--text-muted);">Integrating catering systems and large-scale accommodation design logic directly with national and global ministerial operations for peak premium impact.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Inquiries Engagement Hub -->
+    <section id="contact">
+        <h2 class="section-title">Retain Services</h2>
+        <div class="contact-layout">
+            
+            <div class="contact-info-panel">
+                <h3>Let's Discuss Your Project Scope</h3>
+                <p style="color: var(--text-muted); margin-bottom: 2rem;">Whether you are looking to book an impactful speaker for an upcoming ministry summit, or need an elite hospitality consultant to streamline large-scale event logistics, expect prompt communication and exceptional corporate execution standards.</p>
+                
+                <div class="contact-details">
+                    <div class="contact-detail-item">
+                        <div>
+                            <p style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted);">Direct Secure Mailbox</p>
+                            <!-- Replace simon.kamau@example.com below with his actual email address -->
+                            <a href="mailto:simon.kamau@example.com">simon.kamau@example.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-detail-item">
+                        <div>
+                            <p style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted);">Primary Ecclesiastical Station</p>
+                            <p style="font-weight: 700; color: var(--secondary);">PCEA Elijah Waithaka Church</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form-panel">
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name">Full Corporate / Ministry Title</label>
+                        <input type="text" id="name" required placeholder="e.g., Bishop Dr. / Managing Director Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Secure Contact Email</label>
+                        <input type="email" id="email" required placeholder="corporate@domain.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Scope of Engagement & Project Parameters</label>
+                        <textarea id="message" rows="5" required placeholder="Please state the parameters of your preaching invitation or high-level catering requirements..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Initialize Consultation</button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Floating Secure WhatsApp Concierge Entryway -->
+    <!-- Replace YOUR_PHONE_NUMBER_HERE below with your exact phone number starting with your country code (e.g., 254712345678) -->
+    <a href="https://wa.me/YOUR_PHONE_NUMBER_HERE?text=Hello%20Simon%20Kamau,%20I%20have%20reviewed%20your%20professional%20portfolio%20and%20would%20like%20to%20discuss%20retaining%20your%20services%20for%20an%20upcoming%20high-level%20project." class="whatsapp-box" target="_blank">
+        <span>💬</span> Executive WhatsApp Concierge
+    </a>
+
+    <!-- Enterprise Footer Asset -->
+    <footer>
+        <!-- Replace simon.kamau@example.com below with his actual email address -->
+        <p>&copy; 2026 <span>Simon Kamau</span> | simon.kamau@example.com | Built for Distinction, Rooted in Faith.</p>
+    </footer>
+
+</body>
+</html>
